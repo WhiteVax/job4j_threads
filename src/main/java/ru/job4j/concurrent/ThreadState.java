@@ -1,9 +1,9 @@
 package ru.job4j.concurrent;
 
 /**
- * Класс показывает состояния нитей
+ * Класс показывает состояние нитей
  * @author Vladyslav Bedenko
- * @version 1.0
+ * @version 1.1
  */
 
 public class ThreadState {
@@ -17,14 +17,11 @@ public class ThreadState {
         first.start();
         second.start();
         while ((first.getState() != Thread.State.TERMINATED)
-                && (second.getState() != Thread.State.TERMINATED)) {
+                || (second.getState() != Thread.State.TERMINATED)) {
             System.out.println(first.getState());
             System.out.println(second.getState());
         }
-        if ((first.getState() == Thread.State.TERMINATED)
-                && (second.getState() == Thread.State.TERMINATED)) {
             System.out.println(Thread.currentThread().getName());
             System.out.println("Работа завершена.");
-        }
     }
 }
