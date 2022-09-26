@@ -1,7 +1,8 @@
 package ru.job4j.concurrent;
 
 /**
- * Симуляция прерывания нити
+ * Симуляция блокированной нити
+ * с прерыванием нити
  */
 
 public class ConsoleProgress implements Runnable {
@@ -15,7 +16,7 @@ public class ConsoleProgress implements Runnable {
             try {
                 Thread.sleep(500);
             } catch (InterruptedException e) {
-                e.printStackTrace();
+                Thread.currentThread().interrupt();
             }
         }
     }
