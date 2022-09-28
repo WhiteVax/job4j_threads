@@ -52,9 +52,9 @@ public class Wget implements Runnable {
                     long interval = System.currentTimeMillis() - start;
                     if (interval < 1000) {
                         Thread.sleep(1000 - interval);
-                        downloadData = 0;
-                        start = System.currentTimeMillis();
                     }
+                    downloadData = 0;
+                    start = System.currentTimeMillis();
                 }
                 outStream.write(dataBuffer, 0, bytesRead);
             }
