@@ -1,0 +1,44 @@
+package ru.job4j.cash;
+
+import net.jcip.annotations.GuardedBy;
+import net.jcip.annotations.ThreadSafe;
+
+import java.util.HashMap;
+import java.util.Optional;
+
+/**
+ * Денежные переводы.
+ */
+
+@ThreadSafe
+public class AccountStorage {
+    @GuardedBy("this")
+    private final HashMap<Integer, Account> accounts = new HashMap<>();
+
+    public synchronized boolean add(Account account) {
+        return accounts.putIfAbsent(account.id(), account) == null;
+    }
+
+    public synchronized boolean update(Account account) {
+        return accounts.replace(account.id(), account) != null;
+    }
+
+    public synchronized boolean delete(int id) {
+        return accounts.remove(id) != null;
+    }
+
+    public synchronized Optional<Account> getById(int id) {
+        return Optional.ofNullable(accounts.get(id));
+    }
+
+    public synchronized boolean transfer(int fromId, int toId, int amount) {
+        var rsl = false;
+        if (accounts.containsKey(fromId) && accounts.containsKey(toId)
+                && accounts.get(fromId).amount() >= amount) {
+            rsl = true;
+            update(new Account(fromId, accounts.get(fromId).amount() - amount));
+            update(new Account(toId, accounts.get(toId).amount() + amount));
+        }
+        return rsl;
+    }
+}
