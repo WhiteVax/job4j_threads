@@ -32,12 +32,14 @@ public class AccountStorage {
     }
 
     public synchronized boolean transfer(int fromId, int toId, int amount) {
+        var fromAccount = getById(fromId);
+        var toAccount = getById(toId);
         var rsl = false;
-        if (accounts.containsKey(fromId) && accounts.containsKey(toId)
-                && accounts.get(fromId).amount() >= amount) {
+        if (fromAccount.isPresent() && toAccount.isPresent()
+                && fromAccount.get().amount() >= amount) {
             rsl = true;
-            update(new Account(fromId, accounts.get(fromId).amount() - amount));
-            update(new Account(toId, accounts.get(toId).amount() + amount));
+            update(new Account(fromId, fromAccount.get().amount() - amount));
+            update(new Account(toId,  toAccount.get().amount() + amount));
         }
         return rsl;
     }
