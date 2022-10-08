@@ -38,5 +38,9 @@ public class SimpleBlockingQueue<T> {
         System.out.println("Элемент удалён.");
         return rsl;
     }
+
+    public synchronized int getSize() {
+        return queue.size();
+    }
 }
 
