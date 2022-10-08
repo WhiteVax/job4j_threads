@@ -16,33 +16,25 @@ public class SimpleBlockingQueue<T> {
         this.limit = limit;
     }
 
-    public synchronized void offer(T value) {
+    public synchronized void offer(T value) throws InterruptedException {
         while (queue.size() == limit) {
-            try {
-                System.out.println("Поток усыплён.");
-                wait();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
+            System.out.println("Поток усыплён.");
+            wait();
         }
-        notify();
         queue.add(value);
+        notify();
         System.out.println("Элемент добавлен.");
 
     }
 
-    public synchronized T poll() {
+    public synchronized T poll() throws InterruptedException {
         T rsl = null;
         while (queue.size() == 0) {
-            try {
-                System.out.println("Поток усыплён.");
-                wait();
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
+            System.out.println("Поток усыплён.");
+            wait();
         }
-        notify();
         rsl = queue.poll();
+        notify();
         System.out.println("Элемент удалён.");
         return rsl;
     }
