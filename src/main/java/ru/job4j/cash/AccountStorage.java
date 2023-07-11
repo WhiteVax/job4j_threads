@@ -9,7 +9,6 @@ import java.util.Optional;
 /**
  * Денежные переводы.
  */
-
 @ThreadSafe
 public class AccountStorage {
     @GuardedBy("this")

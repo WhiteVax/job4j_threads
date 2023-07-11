@@ -8,7 +8,6 @@ import java.nio.file.Path;
 /**
  * Класс выполняет скачивание файла с ограничением
  */
-
 public class Wget implements Runnable {
     private static final String TEMPLATE_URL =
             "^((https?|ftp)://|(www|ftp)\\.)?[a-z0-9-]+(\\.[a-z0-9-]+)+([/?].*)?$";

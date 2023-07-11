@@ -8,7 +8,6 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Не блокирующий кеш, реализация с помощью CAS
  */
-
 @ThreadSafe
 public class Cache {
     private final Map<Integer, Base> memory = new ConcurrentHashMap<>();

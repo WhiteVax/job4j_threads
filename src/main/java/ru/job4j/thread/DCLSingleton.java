@@ -3,7 +3,6 @@ package ru.job4j.thread;
 /**
  * Использование общей области памяти
  */
-
 public final class DCLSingleton {
 
     private static volatile DCLSingleton inst;

@@ -4,7 +4,6 @@ package ru.job4j.concurrent;
  * Симуляция блокированной нити
  * с прерыванием нити
  */
-
 public class ConsoleProgress implements Runnable {
     @Override
     public void run() {

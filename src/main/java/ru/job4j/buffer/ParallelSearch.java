@@ -8,7 +8,6 @@ import ru.job4j.thread.SimpleBlockingQueue;
  * Эта схема хорошо описывается шаблоном Producer-Consumer. Однако есть один момент.
  * Когда первая нить заканчивает свою работу, потребители переходят в режим wait.
  */
-
 public class ParallelSearch {
 
     public static void main(String[] args) throws InterruptedException {

@@ -5,7 +5,6 @@ package ru.job4j.concurrent;
  * @author Vladyslav Bedenko
  * @version 1.1
  */
-
 public class ThreadState {
     public static void main(String[] args) {
         var first = new Thread(() -> {

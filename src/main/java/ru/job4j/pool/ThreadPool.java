@@ -10,7 +10,6 @@ import java.util.List;
  * клиент берёт ресурс из пула, выполняет свою работу и возвращает обратно в пул
  * инициализация пула по кол-ву ядер
  */
-
 public class ThreadPool {
     private final List<Thread> threads = new LinkedList<>();
     private final int size = Runtime.getRuntime().availableProcessors();

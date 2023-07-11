@@ -7,7 +7,6 @@ import java.util.concurrent.atomic.AtomicInteger;
 /**
  * Реализация не блокирующего счетчика.
  */
-
 @ThreadSafe
 public class CASCount {
     private final AtomicInteger count = new AtomicInteger(0);
